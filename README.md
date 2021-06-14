@@ -29,7 +29,7 @@ The sink node has an IP of 10.10.10.1. While all nodes are assigned an IP of 10.
 #### Adding A new node: 
 Once a node is added to the system, it broadcasts a packet to be processed by all its neighbours. If the sink node receives the packet, the MAC address of the node is added in the memory of the sink and an IP address is assigned for the new node. The node receives the assigned IP from the sink through a packet with the destination MAC being the MAC of the new node. The IP address assigned in this case will have a depth byte of 1 as it connects directly to the sink. If the new node cannot communicate with the sink node, the broadcasted packet sent by this node will be read by all neighbouring nodes. Consequently, each node responds by assigning an IP address with a depth byte equal to the byte of the assigning node added to 1. The new node then picks the IP with the highest depth byte and sends and  acknowledgment back to the assigning node informing it that it shall connect to it. The fact that a new node picks the highest depth is to guarantee a small branching factor in order to minimize the power consumption. 
 
-### Collision Avoidance
+#### Collision Avoidance
 A TDMA communicaton scheme has been adopted for this project. Sensing nodes are assigned a communication slot within a predetermined application period to avoid costly collisions. Slots are assigned based on allocated IP. Synchronization of system time is done once for each sensing node during ip request. Clock variability is taken advantage of to reduce the probability of two nodes attempting to communicate at the same time. Resynchronization is not handled and is currently a limitation of this approach. 
 
 #### Removing an idle node: 
